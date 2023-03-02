@@ -10,6 +10,11 @@ header{
   padding: 40px 5vw 0 5vw;
 }
 
+.divider{
+
+  margin-top: -2px;
+}
+
 img{
   width: 100%;
 }
@@ -256,6 +261,10 @@ nav a:hover{
   .results{
     grid-template-columns: repeat(3, 1fr);
   }
+
+  main{
+    padding: 60px;
+  }
 }
 
 @media (max-width: 768px){
@@ -270,10 +279,22 @@ nav a:hover{
   #ingredients{
     padding: 20px 0;
   }
+
+  main{
+    padding: 40px;
+  }
 }
 
 @media (max-width: 576px){
   .results, #ingredients .container .corps .listIngredients .content{
     grid-template-columns: repeat(1, 1fr);
+  }
+
+  main{
+    padding: 20px;
+  }
+
+  main input, main select{
+    width: 100%;
   }
 }
