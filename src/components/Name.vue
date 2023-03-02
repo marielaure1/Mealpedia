@@ -1,0 +1,76 @@
+<script>
+import Results from "./Results.vue"
+
+export default {
+    data(){
+        return{
+            meals: "",
+            byName: "",
+            message: ""
+        }
+    },
+    components: {
+        Results: Results
+    },
+    methods: {
+        getByName(){
+           
+            fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${this.byName}`)
+            .then(response => response.json())
+            .then(json => {
+                this.meals = json
+
+                if(this.meals.meals != null){
+                    for (let index = 0; index < this.meals.meals.length; index++) {
+
+                        fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${this.meals.meals[index].idMeal}`)
+                        .then(response => response.json())
+                        .then(json => {
+                            const datas = json
+
+                            var list = []
+
+                            for (let a = 1; a <= 20; a++) {
+
+                                if(datas.meals[0]['strIngredient'+a] != "" && datas.meals[0]['strIngredient'+a] != null){
+                                    list.push({"ingredient": datas.meals[0]['strIngredient'+a], "mesure": datas.meals[0]['strMeasure'+a], "img": `https://www.themealdb.com/images/ingredients/${datas.meals[0]['strIngredient'+a]}.png`})
+                                }
+                            }
+
+                            this.meals.meals[index].listIngredient = list
+                            this.meals.meals[index].strCategory = datas.meals[0].strCategory
+                            this.meals.meals[index].strArea = datas.meals[0].strArea
+                        })
+                        .catch((e) => {
+                            console.log(e);
+                             
+                        });
+                    }
+                }
+
+                this.message = ""
+
+                if(this.meals.meals == null){
+                    this.message = `Aucun plat ne correspond à votre recherche "${this.byName}"`
+                }
+
+
+                if(this.byName == ""){
+                    this.message = "Veuillez rentrer le nom d'un plat"
+                    this.meals = ""
+                }
+
+            })
+            .catch((e) => {
+                console.log(e);
+                
+            });
+        }
+    }
+}
+</script>
+
+<template>
+    <input type="text" @input="getByName" v-model="byName" placeholder="Nom du plat...">
+    <Results :meals="meals" :message="message"/>
+</template>

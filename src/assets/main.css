@@ -1,0 +1,279 @@
+@import './base.css';
+
+body {
+  font-family: 'Mali', cursive;
+}
+header{
+  background: #f54041;
+  height: fit-content;
+  /* min-height: 30vh; */
+  padding: 40px 5vw 0 5vw;
+}
+
+img{
+  width: 100%;
+}
+
+.btn{
+  border: none;
+  background: #f54041;
+  outline: none;
+  padding: 10px 20px;
+  color: white;
+  font-weigth: 600px;
+  margin-bottom: 50px;
+  transition: 0.5s;
+}
+.btn:hover{
+  background: #FFE5DD;
+  color: #f54041;
+}
+
+.logo{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 70px;
+}
+
+.logo iconify-icon{
+  color: white;
+  margin-right: 10px;
+  font-size: 40px;
+}
+
+.logo h1{
+  color: white;
+  font-size: 40px;
+  font-weigth: 600;
+  marin-bottom: 40px;
+}
+
+main{
+  padding: 80px;
+}
+
+main input, main select{
+  padding: 10px 20px;
+  border: none;
+  border-bottom: 2px solid black;
+  outline: none;
+  font-size: 18px;
+  margin-bottom: 50px;
+}
+
+.results{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.results .result{
+  aspect-ratio: 3/4;
+  position: relative;
+}
+
+.results .result h3{
+  width: fit-content;
+  background-color: #f54041;
+  padding: 10px;
+  color: white;
+  font-size: 14px;
+}
+
+.results .result .content{
+  background: #00000070;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  transition: 0.5s;
+}
+
+.results .result .content h2{
+  color: white;
+  transition: 0.5s;
+  /* margin-bottom: 20px; */
+}
+
+.results .result .content button{
+  border: white 1px solid;
+  background: transparent;
+  color: white;
+  padding: 10px 20px;
+  position: absolute;
+  bottom: -70px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.results .result:hover .content h2{
+  color: white;
+  margin-bottom: 50px;
+}
+
+.results .result:hover .content button{
+ bottom: 10px;
+}
+
+
+
+#ingredients{
+  display: none;
+  background: #00000060;
+  backdrop-filter: blur(20px);
+  position: fixed;
+  padding: 5vw;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+#ingredients::-webkit-scrollbar{
+  display: none;
+}
+
+#ingredients.active{
+  display: flex;
+  justify-content: center;
+}
+
+#ingredients .container{
+  width: 90%;
+  background: white;
+  max-width: 800px;
+  position: relative;
+  height: fit-content; 
+  
+}
+
+#ingredients .container .head{
+  width: 100%;
+  position: relative;
+  padding: 30px;
+}
+
+#ingredients .container .head h3{
+  text-align: center;
+  font-size: 20px;
+}
+
+#ingredients .container .head button{
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background: transparent;
+  border: none;
+  outline: none;
+  width: fit-content;
+  height: fit-content;
+}
+
+#ingredients .container .head button iconify-icon{
+  font-size: 30px;
+}
+
+#ingredients .container .corps .img{
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+#ingredients .container .corps .img img{
+  width: 50%;
+  aspect-ratio: 1/1;
+  transition: 0.5s;
+}
+
+#ingredients .container .corps .img:hover img{
+  transform: scale(1.1)
+}
+
+#ingredients .container .corps .listIngredients p{
+  font-size: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#ingredients .container .corps .listIngredients {
+  padding: 60px;
+}
+
+#ingredients .container .corps .listIngredients .content{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+#ingredients .container .corps .listIngredients img{
+  width:40px;
+}
+
+#ingredients .container .corps .listIngredients .content > div{
+  display: flex;
+  align-items: center;
+}
+
+#ingredients .container .corps .listIngredients .content > div img{
+  width: 30px;
+  margin-right: 20px;
+}
+
+#ingredients .container .corps .listIngredients .content > div h4{
+}
+
+nav{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 0px;
+}
+
+nav a{
+  color: #f54041;
+  text-decoration: none;
+  margin-right: 10px;
+  padding: 8px 15px;
+  background: white;
+  font-size: 14px;
+  margin-bottom: 10px;
+  transition: 0.5s;
+}
+
+nav a:hover{
+  background: #FFE5DD;
+  /* color: white; */
+}
+
+@media (max-width: 992px){
+  .results{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px){
+  .results{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #ingredients .container{
+    width: 100%;
+  }
+
+  #ingredients{
+    padding: 20px 0;
+  }
+}
+
+@media (max-width: 576px){
+  .results, #ingredients .container .corps .listIngredients .content{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
