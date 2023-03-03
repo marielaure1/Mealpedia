@@ -39,6 +39,7 @@ export default {
 
 <template>
     <div v-if="message" class="message">{{ message }}</div>
+    <div class="message">{{ count }}</div>
     <div class="results" v-if="meals.meals">
 
         <div class="result" v-for="meal of meals.meals" v-bind:style="{ 'background': 'url(' + meal.strMealThumb + ') center/cover' }" > 

@@ -46,11 +46,15 @@ export default {
                             console.log(e);
                         });
                     }
+
+                    if(this.meals.meals.length > 1){
+                        this.message = `Il y a ${this.meals.meals.length} résultats.`
+                    } else if(this.meals.meals.length == 1){
+                        this.message = `Il y a 1 résultat.`
+                    } else{
+                        this.message = ""
+                    }
                 }
-
-                console.log(this.meals);
-
-                this.message = ""
 
                 if(this.meals.meals == null){
                     this.message = `Aucun plat ne correspond à votre recherche "${this.byCategory}"`

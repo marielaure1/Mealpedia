@@ -50,9 +50,16 @@ export default {
                              
                         });
                     }
+
+                    if(this.meals.meals.length > 1){
+                        this.message = `Il y a ${this.meals.meals.length} résultats.`
+                    } else if(this.meals.meals.length == 1){
+                        this.message = `Il y a 1 résultat.`
+                    } else{
+                        this.message = ""
+                    }
                 }
 
-                this.message = ""
 
                 if(this.meals.meals == null){
                     this.message = `Aucun plat ne correspond à votre recherche "${this.byIngredient}"`
